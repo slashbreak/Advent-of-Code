@@ -10,7 +10,7 @@ for i,j in enumerate(lines):
 	boards.append(j)
 	boards[i] = [x for x in j.replace('\n',' ').replace('  ',' ').split(' ')]
 
-def check_bingo(index, board):
+def check_bingo(board):
 	#horizontal
 	for i in range(5):
 		if "".join(x for x in board[i*5:i*5+5]) == "XXXXX":
@@ -31,7 +31,7 @@ for num in numbers:
 	for i in range(len(boards)):
 		if num in boards[i]:
 			boards[i][boards[i].index(num)] = "X" # Replace number with an X
-			if i in unsolved_boards and check_bingo(i, boards[i]):
+			if i in unsolved_boards and check_bingo(boards[i]):
 				print("BINGO on board {}".format(i))
 				unsolved_boards.remove(i)
 				sum_unmarked = sum([int(x) for x in boards[i] if x.isnumeric()])
