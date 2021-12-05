@@ -15,8 +15,6 @@ def check_bingo(board):
 	for i in range(5):
 		if "".join(x for x in board[i*5:i*5+5]) == "XXXXX":
 			return True
-	# vertical
-	for i in range(5):
 		if board[0+i]+board[5+i]+board[10+i]+board[15+i]+board[20+i] == "XXXXX":
 			return True
 	return False
