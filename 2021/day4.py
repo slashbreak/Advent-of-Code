@@ -5,13 +5,9 @@
 with open('input4') as f:
 	lines = [x.strip() for x in f.read().split('\n\n')]
 numbers = [x for x in lines.pop(0).split(',')]
-boards = []
-for i,j in enumerate(lines):
-	boards.append(j)
-	boards[i] = [x for x in j.replace('\n',' ').replace('  ',' ').split(' ')]
+boards = [[x for x in j.replace('\n',' ').replace('  ',' ').split(' ')] for j in lines]
 
 def check_bingo(board):
-	#horizontal
 	for i in range(5):
 		if "".join(x for x in board[i*5:i*5+5]) == "XXXXX":
 			return True
